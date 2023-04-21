@@ -49,5 +49,6 @@ CAN1.TXpacketLoad(15);
 
  CAN1.TXpackettransmit();
  Serial.println("Message 2 Sent...");
-}
 delay(500);
+}
+
