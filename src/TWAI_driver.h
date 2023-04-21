@@ -5,8 +5,6 @@
 #include <driver/gpio.h>
 #include <driver/twai.h>
 
-#define GPIO_CANBUS_TX GPIO_NUM_4
-#define GPIO_CANBUS_RX GPIO_NUM_5
 
 class TWAI_Interface{
     private:
