@@ -30,8 +30,10 @@ void loop() {
   // Method to print a unknown DLC
   CAN_ID = CAN1.RXpacketBegin(); //Get Frame ID
 
-  Serial.print("Msg ID: ");
+  Serial.print("Msg1 ID: ");
   Serial.print(CAN_ID,HEX);
+  Serial.print("  Msg1 DLC: ");
+  Serial.print(CAN1.RXgetDLC());
 
   for(int i = 0; i < CAN1.RXgetDLC();i++){    //Function RXgetDLC() returns aboves frame DLC
       Serial.print("     ");    
@@ -40,13 +42,16 @@ void loop() {
   }
 
   Serial.println("");
+  Serial.println("");
 
 
   // Method to print a known DLC -- example DLC of 3 bytes -- max will be CAN1.RXpacketRead(7);
   CAN_ID = CAN1.RXpacketBegin(); //Get Frame ID
 
-  Serial.print("Msg ID: ");
+  Serial.print("Msg2 ID: ");
   Serial.print(CAN_ID,HEX);
+  Serial.print("  Msg2 DLC: ");
+  Serial.print(CAN1.RXgetDLC());
 
   var1 = CAN1.RXpacketRead(0);
   var2 = CAN1.RXpacketRead(1);
@@ -58,6 +63,7 @@ void loop() {
   Serial.print(var2);
   Serial.print("     ");
   Serial.println(var3);
+  
   
   
 }
