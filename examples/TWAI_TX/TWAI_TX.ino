@@ -36,7 +36,7 @@ CAN1.TXpacketLoad(70);  //Decimal Value to be transmited
 CAN1.TXpacketLoad(80);  //Decimal Value to be transmited
  CAN1.TXpackettransmit();
  Serial.println("Message 1 Sent...");
-
+delay(500);
 //Frame Setup:
 //ID: 0x601
 //DLC: 3 -- Automatically handled by the library
@@ -50,3 +50,4 @@ CAN1.TXpacketLoad(15);
  CAN1.TXpackettransmit();
  Serial.println("Message 2 Sent...");
 }
+delay(500);
