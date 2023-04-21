@@ -84,7 +84,7 @@ uint8_t TWAI_Interface ::    TXpackettransmit (){
 
   uint32_t  TWAI_Interface :: RXpacketBegin(){
     
-  if (twai_receive(&CanRxMessage, pdMS_TO_TICKS(0)) == ESP_OK)    //ESP_OK: Message successfully received from RX queue
+  if (twai_receive(&CanRxMessage, pdMS_TO_TICKS(0)) != ESP_OK)    //ESP_OK: Message successfully received from RX queue
   {
     if(CanRxMessage.extd){
         return CanRxMessage.identifier; //Return 29bit ID Extended
