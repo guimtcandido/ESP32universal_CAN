@@ -1,9 +1,11 @@
 #include "TWAI_driver.h"
 
-TWAI_Interface :: TWAI_Interface(uint16_t TWAI_BAUD){
+TWAI_Interface :: TWAI_Interface(uint16_t TWAI_BAUD,uint8_t TX_PIN, uint8_t RX_PIN){
 
-twai_timing_config_t t_config;
-    twai_general_config_t g_config = TWAI_GENERAL_CONFIG_DEFAULT(GPIO_CANBUS_TX, GPIO_CANBUS_RX, TWAI_MODE_NORMAL);
+    twai_timing_config_t t_config;
+    _txPin = (gpio_num_t)TX_PIN;
+    _rxPin = (gpio_num_t)RX_PIN;
+    twai_general_config_t g_config = TWAI_GENERAL_CONFIG_DEFAULT(_txPin, _rxPin, TWAI_MODE_NORMAL);
 
   switch(TWAI_BAUD){
     case 25:

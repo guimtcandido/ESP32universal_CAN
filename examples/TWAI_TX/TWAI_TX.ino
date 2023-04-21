@@ -9,8 +9,10 @@
 //            125 -> 125Kbps
 //            100 -> 100Kbps
 //             50 -> 50Kbps
-//             25 -> 25Kbps
-TWAI_Interface CAN1(1000);
+//             25 -> 25Kbps  
+
+TWAI_Interface CAN1(1000,4,5);  //argument 1 - BaudRate,  argument 2 - CAN_TX PIN,  argument 3 - CAN_RX PIN
+
 
 uint32_t CAN_ID = 0;
 
@@ -51,4 +53,3 @@ CAN1.TXpacketLoad(15);
  Serial.println("Message 2 Sent...");
 delay(500);
 }
-
