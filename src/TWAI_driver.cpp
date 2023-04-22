@@ -79,7 +79,7 @@ void TWAI_Interface :: TXpacketLoad (uint8_t TWAITX_DATA){
 uint8_t TWAI_Interface ::    TXpackettransmit (){
     esp_err_t CanTxErr;
     if(TXdatactrl_OVF == 0){
-      CanTxMessage.data_length_code = TXdatactrl+1;
+      CanTxMessage.data_length_code = TXdatactrl;
       TXdatactrl = 0;
     }else{
       CanTxMessage.data_length_code = 8;
