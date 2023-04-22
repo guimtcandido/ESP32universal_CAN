@@ -61,7 +61,7 @@ TWAI_Interface :: TWAI_Interface(uint16_t TWAI_BAUD,uint8_t TX_PIN, uint8_t RX_P
 }
 
 void TWAI_Interface :: TXpacketBegin (uint16_t TWAITX_ID,uint8_t TWAITX_EXTD_EN){
-    this->CanTxMessage.identifier = TWAITX_ID;
+    CanTxMessage.identifier = TWAITX_ID;
     CanTxMessage.extd = TWAITX_EXTD_EN;
     CanTxMessage.rtr = 0;   
 
@@ -69,18 +69,28 @@ void TWAI_Interface :: TXpacketBegin (uint16_t TWAITX_ID,uint8_t TWAITX_EXTD_EN)
 
 void TWAI_Interface :: TXpacketLoad (uint8_t TWAITX_DATA){  
     CanTxMessage.data[TXdatactrl]= TWAITX_DATA;
-    this->TXdatactrl ++;
-    if(this->TXdatactrl > 7){
-        this->TXdatactrl = 0;
+    TXdatactrl ++;
+    if(TXdatactrl > 7){
+        TXdatactrl_OVF = 1;
+        TXdatactrl = 7;
     }
  }
 
 uint8_t TWAI_Interface ::    TXpackettransmit (){
     esp_err_t CanTxErr;
+    if(TXdatactrl_OVF == 0){
+      CanTxMessage.data_length_code = TXdatactrl+1;
+    }else{
+      CanTxMessage.data_length_code = 8;
+      TXdatactrl_OVF = 0;
+    }
+    
     if ((CanTxErr = twai_transmit(&CanTxMessage, pdMS_TO_TICKS(0))) != ESP_OK)   
     {
       return 0; //Transmission Failed
-    }else return 1; //Transmission OK
+    }
+    else   
+      return 1; //Transmission OK
 
   }
 
