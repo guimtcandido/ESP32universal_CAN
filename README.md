@@ -27,8 +27,10 @@ CAN1.TXpacketBegin(ID,EXTENDED);   EXTENDED is a boolean, if extended ID write a
 Load a byte referred to the ID set above. You do not need to set DLC, it is automatically handled by the function as you add more packets to the message.
 CAN1.TXpacketLoad(Data Byte);    //Remember each packet only allows you to write a byte data
 
+
 Call this function and the message will be transmitted
 CAN1.TXpackettransmit();         //Transmit the message configured above
+
 
 Receiving Messages:
 
