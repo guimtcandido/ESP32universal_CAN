@@ -26,13 +26,13 @@ Functions:
 
 Initialize the driver by writing the following function before the void setup();
 
-TWAI_Interface CAN1(BAUDRATE,TX_PIN,RX_PIN);  
+#TWAI_Interface CAN1(BAUDRATE,TX_PIN,RX_PIN);  
 
 Transmitting Messages:
 
 Initialize a packet transmission by calling the function below
 
-CAN1.TXpacketBegin(ID,EXTENDED);   EXTENDED is a boolean, if extended ID write as 1.
+#CAN1.TXpacketBegin(ID,EXTENDED);   EXTENDED is a boolean, if extended ID write as 1.
 
 
 Load a byte referred to the ID set above. You do not need to set DLC, it is automatically handled by the function as you add more packets to the message.
