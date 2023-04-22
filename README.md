@@ -35,7 +35,7 @@ _Initialize a packet transmission by calling the function below_
 **CAN1.TXpacketBegin(ID,EXTENDED);   EXTENDED is a boolean, if extended ID write as 1.**
 
 
-_ _Load a byte referred to the ID set above. You do not need to set DLC, it is automatically handled by the function as you add more packets to the message._ _
+_Load a byte referred to the ID set above. You do not need to set DLC, it is automatically handled by the function as you add more packets to the message._
 
 **CAN1.TXpacketLoad(Data Byte);    //Remember each packet only allows you to write a byte data**
 
