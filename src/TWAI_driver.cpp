@@ -80,8 +80,10 @@ uint8_t TWAI_Interface ::    TXpackettransmit (){
     esp_err_t CanTxErr;
     if(TXdatactrl_OVF == 0){
       CanTxMessage.data_length_code = TXdatactrl+1;
+      TXdatactrl = 0;
     }else{
       CanTxMessage.data_length_code = 8;
+      TXdatactrl = 0;
       TXdatactrl_OVF = 0;
     }
     

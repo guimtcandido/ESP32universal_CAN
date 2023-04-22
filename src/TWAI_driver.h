@@ -13,7 +13,7 @@ class TWAI_Interface{
     uint8_t TXdatactrl = 0;
     uint8_t TXdatactrl_OVF = 0;
     gpio_num_t _rxPin;
-  gpio_num_t _txPin;
+    gpio_num_t _txPin;
     public:
     
     TWAI_Interface (uint16_t TWAI_BAUD,uint8_t TX_PIN, uint8_t RX_PIN);
