@@ -33,7 +33,7 @@ void loop() {
 
   Serial.print("Msg2 ID: ");
   Serial.print(CAN_ID,HEX);
-  
+
   uint8_t CAN_DLC = CAN1.RXgetDLC();
   Serial.print("    Msg2 DLC: ");
   Serial.print(CAN_DLC);
@@ -49,6 +49,5 @@ void loop() {
   Serial.print("     ");
   Serial.println(var3);
   
-  
-  
+  delay(100); //Visual Delay
 }

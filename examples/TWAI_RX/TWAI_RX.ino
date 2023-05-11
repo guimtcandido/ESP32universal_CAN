@@ -44,5 +44,6 @@ void loop() {
   }
 
   Serial.println("");
+  delay(100); //Visual Delay
 
 }
