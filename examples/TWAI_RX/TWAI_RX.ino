@@ -16,9 +16,7 @@ TWAI_Interface CAN1(1000,4,5);  //argument 1 - BaudRate,  argument 2 - CAN_TX PI
 
 uint32_t CAN_ID = 0;
 
-uint8_t var1 = 0;
-uint8_t var2 = 0;
-uint8_t var3 = 0;
+uint8_t var = 0;
 
 void setup() {
   Serial.begin(115200);
@@ -33,38 +31,18 @@ void loop() {
 
   Serial.print("Msg1 ID: ");
   Serial.print(CAN_ID,HEX);
+
   Serial.print("  Msg1 DLC: ");
-  Serial.print(CAN1.RXgetDLC());
+   uint8_t CAN_DLC = CAN1.RXgetDLC();
+  Serial.print(CAN_DLC);
 
   for(int i = 0; i < CAN1.RXgetDLC();i++){    //Function RXgetDLC() returns aboves frame DLC
-      Serial.print("     ");    
-      Serial.print(CAN1.RXpacketRead(i)); //Get FRAME DATA
+      Serial.print("     ");  
+      var = CAN1.RXpacketRead(i);  
+      Serial.print(var); //Get FRAME DATA
       
   }
 
   Serial.println("");
-  Serial.println("");
 
-
-  // Method to print a known DLC -- example DLC of 3 bytes -- max will be CAN1.RXpacketRead(7);
-  CAN_ID = CAN1.RXpacketBegin(); //Get Frame ID
-
-  Serial.print("Msg2 ID: ");
-  Serial.print(CAN_ID,HEX);
-  Serial.print("  Msg2 DLC: ");
-  Serial.print(CAN1.RXgetDLC());
-
-  var1 = CAN1.RXpacketRead(0);
-  var2 = CAN1.RXpacketRead(1);
-  var3 = CAN1.RXpacketRead(2);
-
-  Serial.print("     ");
-  Serial.print(var1);
-  Serial.print("     ");
-  Serial.print(var2);
-  Serial.print("     ");
-  Serial.println(var3);
-  
-  
-  
 }
